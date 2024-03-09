@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Student Marks</title>
+<!-- Bootstrap CSS -->
+<link
+	href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css"
+	rel="stylesheet">
+<style>
+/* Center the pop-up message */
+#pop-up-msg {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 9999;
+	padding: 20px;
+	background-color: #28a745; /* Green background color */
+	border-radius: 10px;
+	text-align: center;
+	color: #fff; /* White text color */
+	display: none; /* Hide initially */
+}
+.select
+{
+width:100px;
+}
+</style>
+</head>
+<body>
+	<div class="container mt-5">
+		<h2 class="mb-4">Upload Student Marks</h2>
+		<form id="marksForm" action="/addmarks" method="post">
+
+			<table class="table table-striped">
+				<thead class="thead-dark">
+					<tr>
+						<td><label for="exam">Exam Type</label>
+						 <select class="select" name="examType" id="exam">
+								<option value="SAI">SA I</option>
+								<option value="SAII">SA II</option>
+								<option value="FAI">FA I</option>
+								<option value="FAII">FA II</option>
+								<option value="FAIII">FA III</option>
+						</select></td>
+					</tr>
+					<tr>
+						<th>Student RegNo</th>
+						<th>Student Name</th>
+						<th>Maths(100)</th>
+						<th>Physics(100)</th>
+						<th>Chemistry(100)</th>
+						<th>Biology(100)</th>
+						<th>English(100)</th>
+						<th>Telugu(100)</th>
+						<th>Total(600)</th>
+					</tr>
+				</thead>
+				<tbody>
+					<!-- Loop through each student -->
+					<tr th:each="student : ${students}">
+						<td th:text="${student.getRegNo()}"></td>
+						<td th:text="${student.getName()}"></td>
+						<td><input type="number" class="form-control"
+							th:name="'maths_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'physics_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'chemistry_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'biology_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'english_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'telugu_' + ${student.getRegNo()}" required></td>
+						<td><input type="number" class="form-control"
+							th:name="'total_' + ${student.getRegNo()}" required></td>
+					</tr>
+				</tbody>
+			</table>
+
+			<br>
+			<button type="submit" class="btn btn-primary">Upload Marks</button>
+		</form>
+
+		<!-- Pop-up message -->
+		<div id="pop-up-msg">Marks uploaded successfully!</div>
+	</div>
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+	<script>
+		// Attach a submit event handler to the form
+		$('#marksForm').submit(function(event) {
+			// Prevent the default form submission behavior
+			event.preventDefault();
+
+			// Make an AJAX POST request to submit the attendance data
+			$.post("/addmarks", $(this).serialize(), function(data, status) {
+				// Display a styled popup message with the response message below the title
+				var popup = $('<div></div>').html(data);
+				popup.css({
+					'background-color' : '#fa7407',
+					'color' : '#fff',
+					'padding' : '20px',
+					'border-radius' : '10px',
+					'box-shadow' : '0 0 20px rgba(0, 0, 0, 0.3)',
+					'position' : 'absolute',
+					'top' : $('h2').offset().top + $('h2').outerHeight() + 40, // Below the title with 40px margin
+					'left' : '50%',
+					'transform' : 'translateX(-50%)',
+					'z-index' : '9999',
+					'font-size' : '18px',
+					'font-weight' : 'bold'
+				});
+				$('body').append(popup);
+				// Automatically close the popup after 3 seconds
+				setTimeout(function() {
+					popup.fadeOut('slow', function() {
+						$(this).remove();
+					});
+				}, 3000);
+			});
+		});
+	</script>
+
+</body>
+
+</html>

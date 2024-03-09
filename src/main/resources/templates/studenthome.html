@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Dashboard</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <style>
+        /* Custom styles */
+        body {
+            background-image: url('/images/sms1.jpg');
+            background-size: cover;
+            font-family: Arial, sans-serif;
+        }
+        .container {
+            padding-top: 20px;
+        }
+        #cl {
+            margin-left: 30px;
+            border-radius: 10px;
+        }
+        .list-group-item {
+            cursor: pointer;
+            color: rgb(11, 1, 1);
+        }
+        .list-group-item:hover {
+            background-color: #237fd5;
+        }
+        .list-group-item:active,
+        .list-group-item:focus {
+            background-color: #007bff;;
+        }
+        .list-group-item:focus:hover {
+            background-color: #0594f3;
+        }
+        h1 {
+            text-align: center;
+            background-color: #1a63a7;
+            color: aliceblue;
+            border-radius: 5px;
+            font-family: cursive;
+            margin: 20px;
+        }
+        .tab-content {
+            padding-right: 30px;
+            background-color: #ff0a0a;
+            border: 1px solid #0564c4;
+            border-radius: 5px;
+        }
+        iframe {
+            border: none;
+            width: 100%;
+            height: calc(100vh - 100px);
+            margin-right: 100px;
+        }
+        .tab-pane {
+            margin-top: 20px;
+        }
+        .cls {
+            border-radius: 10px;
+        }
+        h2 {
+            text-align: center;
+            color: #fcfcfc;
+            border-radius: 5px;
+            font-family: cursive;
+            margin-left: 60px;
+            margin-right: 60px;
+            font-size: 50px;
+        }
+    </style>
+</head>
+<body>
+<div th:if="${student}">
+    <h1>Welcome to Student Dashboard </h1>
+    <h2>Hello, <span th:text="${student.getName}"></span></h2>
+</div>
+
+<div class="row">
+    <div class="col-lg-3" id="cl"> <!-- Allocate 30% width -->
+        <div class="cls">
+            
+            <a class="list-group-item list-group-item-action" target="if" href="/studentprofile">Profile</a>
+            <a class="list-group-item list-group-item-action" target="if" href="/getmarks">Marks</a>
+            <a class="list-group-item list-group-item-action" target="if" href="/getattendance"> Attendance</a>
+            <a class="list-group-item list-group-item-action" target="if" href="lectureTitles"> Lectures</a>
+            <a class="list-group-item list-group-item-action" target="if" href="/getassessments">Assessments</a>
+            <a class="list-group-item list-group-item-action" href="/logout">Logout</a>
+        </div>
+        <script>
+            window.addEventListener('pageshow', function(event) {
+                if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                    window.location.href = '/studentlogin';
+                }
+            });
+        </script>
+    </div>
+    <div class="col-lg-8"> <!-- Allocate 70% width -->
+        <div>
+            <iframe name="if"> </iframe>
+        </div>
+    </div>
+</div>
+
+<!-- Bootstrap JS and jQuery (for Bootstrap functionality) -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

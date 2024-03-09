@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+         body {
+            padding: 20px;
+            
+        }
+          h2
+        {
+            
+            font-family: cursive;
+        }
+        .container-30 {
+            width: 30%;
+        }
+        .profile-info {
+            margin-bottom: 20px;
+          
+            padding: 10px;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .profile-info strong {
+            color:  #1a63a7;
+            font-size:20px;
+        }
+        .edit-button {
+            margin-top: 20px;
+        }
+         span{
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container-40" th:if="${student}"> 
+        <h2 class="text-center mb-4">User Profile Details</h2>
+        <div class="profile-info" >
+            <strong>Full Name:></strong> <span th:text="${student.getName}"></span>
+        </div>
+        <div class="profile-info">
+            <strong>DOB:</strong>  <span th:text="${student.getDob}"></span>
+        </div>
+        <div class="profile-info">
+            <strong>RegNo:</strong>  <span th:text="${student.getRegNo}"></span>
+        </div>
+        
+        <div class="profile-info">
+            <strong>Gender:</strong>  <span th:text="${student.getGender}"></span>
+        </div>
+         <div class="profile-info">
+            <strong>Standard:</strong>  <span th:text="${student.getStd}"></span>
+        </div>
+        <div class="edit-button text-center">
+            <button type="button" class="btn btn-primary">Edit Profile</button>
+        </div>
+    </div>
+</body>
+</html>

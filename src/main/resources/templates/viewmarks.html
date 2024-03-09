@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Student Marks</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the pop-up message */
+        #pop-up-msg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            padding: 20px;
+            background-color: #28a745; /* Green background color */
+            border-radius: 10px;
+            text-align: center;
+            color: #fff; /* White text color */
+            display: none; /* Hide initially */
+        }
+    </style>
+</head>
+<body>
+    
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                <tr>
+                <td>
+            
+                </td>
+                </tr>
+                    <tr>
+                        <th>Exam Type</th>
+                        <th>Maths(100)</th>
+                        <th>Physics(100)</th>
+                        <th>Chemistry(100)</th>
+                        <th>Biology(100)</th>
+                        <th>English(100)</th>
+                        <th>Telugu(100)</th>
+                        <th>Total(600)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr th:each="studentMarks:${studentMarks}">
+                    <td th:text="${studentMarks.getExamType}"></td>
+                    <td th:text="${studentMarks.getMaths}"></td>
+                    <td th:text="${studentMarks.getPhysics}"></td>
+                    <td th:text="${studentMarks.getChemistry}"></td>
+                    <td th:text="${studentMarks.getBiology}"></td>
+                    <td th:text="${studentMarks.getEnglish}"></td>
+                    <td th:text="${studentMarks.getTelugu}"></td>
+                    <td th:text="${studentMarks.getTotal}"></td>
+                    
+                    </tr>
+                </tbody>
+            </table>
+
+     
+    
+</body>
+
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page - School Management System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-image: url('/images/sms1.jpg');
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        margin-top: 100px; /* Adjusted margin top */
+    }
+    .jumbotron {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+    }
+    .card {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .btn-custom {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 15px 0;
+        border-radius: 5px;
+        background-color: #1a63a7;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    h2
+    {
+        text-align: center;
+    }
+    .h2
+    {
+        background-color: #1a63a7;
+        color: aliceblue;
+        border-radius: 5px;
+        font-family:cursive
+    }
+    form {
+        max-width: 400px; /* Adjusted max-width for better form layout */
+        margin: auto; /* Center aligning the form */
+    }
+    input[type=submit]
+    {
+        height: 20px;
+    }
+   
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to School Management System</h1>
+                <p class="lead">Manage your school activities efficiently with our system.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+
+                <h2 class="h2">Student Registration</h2>
+                <form  action="/addstudent" method="post">  
+                    <div class="form-group">
+                    <label for="name">Student Name</label>
+                    <input type="text" class="form-control" id="name" placeholder="Full Name" name="name">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputReg">Register No</label>
+                    <input type="number" class="form-control" id="inputReg" placeholder="Register Number" name="regNo">
+                  </div>
+                  <div class="form-group">
+                    <label for="inputclass">Class</label>
+                    <input type="number" class="form-control" id="inputclass" placeholder="class" name="std">
+                  </div>
+                   <div>
+                    <label for="inputgen">Gender:</label>
+                    <input type="radio" id="inputReg" placeholder="Subject" required name="gender" value="male">Male
+                   <input type="radio"  id="inputReg" placeholder="Subject" required name="gender" value="female"> female
+                   <input type="radio"  id="inputReg" placeholder="Subject" required name="gender" value="others"> Others
+                </div>
+                    <div class="form-group">
+                      <label for="inputEmail">DOB</label>
+                      <input type="password" class="form-control" id="inputEmail"  placeholder="dob(yyyymmdd)" name="dob">
+                    </div>
+                   
+                    <button type="submit" class="btn btn-primary ">Register</button>
+                  </form>
+                  
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

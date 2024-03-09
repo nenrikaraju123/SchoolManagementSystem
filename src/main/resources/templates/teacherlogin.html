@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Home Page - School Management System</title>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+    body {
+        background-image: url('/images/sms1.jpg');
+        background-size: cover;
+        font-family: Arial, sans-serif;
+    }
+    .container {
+        margin-top: 100px; /* Adjusted margin top */
+    }
+    .jumbotron {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        padding: 30px;
+        text-align: center;
+    }
+    .card {
+        background-color: rgba(255, 255, 255, 0.7);
+        border-radius: 10px;
+        padding: 30px;
+    }
+    .btn-custom {
+        display: block;
+        width: 100%;
+        max-width: 300px;
+        margin: 20px auto;
+        padding: 15px 0;
+        border-radius: 5px;
+        background-color: #1a63a7;
+        color: #fff;
+        font-size: 18px;
+        font-weight: bold;
+        text-decoration: none;
+        transition: background-color 0.3s;
+    }
+    h2
+    {
+        text-align: center;
+    }
+    .h2
+    {
+        background-color: #1a63a7;
+        color: aliceblue;
+        border-radius: 5px;
+        font-family:cursive
+    }
+    form {
+        max-width: 400px; /* Adjusted max-width for better form layout */
+        margin: auto; /* Center aligning the form */
+    }
+    input[type=submit]
+    {
+        height: 20px;
+    }
+    
+    h4
+    {
+    font-family:cursive
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="jumbotron">
+                <h1 class="display-4">Welcome to School Management System</h1>
+                <p class="lead">Manage your school activities efficiently with our system.</p>
+            </div>
+        </div>
+        <div class="col-md-6">
+            <div class="card">
+
+                <h2 class="h2">Teacher Login</h2>
+                <form action="/teachervalidation" method="post">
+                    <div class="form-group">
+                      <label for="inputEmail">Username</label>
+                      <input type="email" class="form-control" id="inputEmail" placeholder="example@gmail.com" name="email">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputPassword">Password</label>
+                      <input type="password" class="form-control" id="inputPassword" placeholder="Password" name="password">
+                    </div>
+                    <button type="submit" class="btn btn-primary ">Login</button>
+                      <a href="/teacherregister" class="btn btn-custom">Teacher Register</a>
+                      <h4>Register New Teacher</h4>
+                  </form>
+                    <script>
+        window.addEventListener('pageshow', function(event) {
+            if (event.persisted || (window.performance && window.performance.navigation.type === 2)) {
+                window.location.href = '/teacherlogin';
+            }
+        });
+    </script>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

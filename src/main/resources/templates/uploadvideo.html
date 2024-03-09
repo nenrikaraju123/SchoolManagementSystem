@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Upload Video</title>
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        margin: 0;
+        padding: 0;
+       
+    }
+
+    .container {
+        max-width: 600px;
+        margin: 50px auto;
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        position: relative;
+    }
+
+    h2 {
+        text-align: center;
+        color: #333;
+    }
+
+    form {
+        text-align: center;
+    }
+
+    .form-group {
+        margin-bottom: 20px;
+    }
+
+    input[type="file"] {
+        display: none;
+    }
+
+    .custom-file-upload {
+        display: inline-block;
+        background-color: #007bff;
+        color: white;
+        padding: 10px 20px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .custom-file-upload:hover {
+        background-color: #0056b3;
+    }
+
+    #uploading-msg {
+        display: none;
+        text-align: center;
+        color: #555;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: rgba(255, 255, 255, 0.8);
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        z-index: 9999;
+    }
+
+    .uploading-animation {
+        display: inline-block;
+        width: 30px;
+        height: 30px;
+        border: 4px solid #f3f3f3;
+        border-top: 4px solid #3498db;
+        border-radius: 50%;
+        animation: spin 2s linear infinite;
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+    }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>Upload Video</h2>
+    <form id="uploadForm" method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="video">Select Video:</label><br>
+            <label class="custom-file-upload">
+                <input type="file" id="video" name="video">
+                Choose File
+            </label>
+        </div>
+        <button type="submit" class="custom-file-upload">Upload Video</button>
+    </form>
+</div>
+
+<div id="uploading-msg">
+    Video uploaded successfully: <span id="uploadedFileName"></span><br>
+    <div class="uploading-animation"></div>
+</div>
+
+<script>
+document.getElementById('uploadForm').addEventListener('submit', function(event) {
+    event.preventDefault();
+    document.getElementById('uploading-msg').style.display = 'block';
+
+    var formData = new FormData();
+    formData.append('video', document.getElementById('video').files[0]);
+
+    fetch('/upload', {
+        method: 'POST',
+        body: formData
+    })
+    .then(response => {
+        if (response.ok) {
+            var fileName = document.getElementById('video').files[0].name;
+            document.getElementById('uploadedFileName').textContent = fileName;
+            setTimeout(function() {
+                document.getElementById('uploading-msg').style.display = 'none';
+            }, 2000); // Hide after 2 seconds
+        } else {
+            throw new Error('Error uploading video');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error uploading video');
+        document.getElementById('uploading-msg').style.display = 'none';
+    });
+});
+</script>
+</body>
+</html>

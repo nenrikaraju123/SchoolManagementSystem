@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Upload Student Marks</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        /* Center the pop-up message */
+        #pop-up-msg {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 9999;
+            padding: 20px;
+            background-color: #28a745; /* Green background color */
+            border-radius: 10px;
+            text-align: center;
+            color: #fff; /* White text color */
+            display: none; /* Hide initially */
+        }
+    </style>
+</head>
+<body>
+  
+       
+
+            <table class="table table-striped">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Student RegNo</th>
+                        <th>Student Name</th>
+                        <th>Gender</th>
+                        <th>DOB</th>
+                        <th>Standard</th>
+                        
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Loop through each student -->
+                    <tr th:each="student : ${students}">
+                    <td th:text="${student.getRegNo}">
+                    <td th:text="${student.getName}">
+                    <td th:text="${student.getGender}">
+                    <td th:text="${student.getDob}">
+                    <td th:text="${student.getStd}">
+                    </tr>
+                </tbody>
+            </table>
+
+         
+
+      
+
+    
+</body>
+
+</html>
